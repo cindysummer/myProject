@@ -4,6 +4,7 @@ import Login from './views/login';
 import Register from './views/register';
 import ShopSystem from './views/shopSys';
 import PlatformSystem from './views/platformSys';
+import AddShop from './components/shops/addShop';
 
 Vue.use(Router)
 
@@ -22,7 +23,14 @@ export default new Router({
     {
       path: '/shopSystem',
       name: 'shopSystem',
-      component: ShopSystem
+      component: ShopSystem,
+      children: [
+        {
+          path: 'addShop',
+          name: 'addshop',
+          component: AddShop
+        }
+      ]
     },
     {
       path: '/platformSystem',

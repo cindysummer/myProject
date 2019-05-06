@@ -25,7 +25,7 @@
     },
     methods: {
       login() {
-        this.$router.push("/platformSystem");
+        this.$router.push("/shopSystem");
       },
       register() {
         this.$router.push("/register");
