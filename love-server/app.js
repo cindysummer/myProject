@@ -7,6 +7,11 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var shopRouter = require('./routes/shop');
+var goodsRouter = require('./routes/goods');
+var ordersRouter = require('./routes/orders');
+var servicesRouter = require('./routes/services');
+var petsRouter = require('./routes/pets');
+var masterRouter = require('./routes/master');
 
 var app = express();
 require("./dao/database");//引入链接数据库的文件即可
@@ -24,6 +29,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/shop', shopRouter);
+app.use('/goods', goodsRouter);
+app.use('/master', masterRouter);
+app.use('/orders', ordersRouter);
+app.use('/pet', petsRouter);
+app.use('/service', servicesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
