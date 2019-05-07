@@ -1,6 +1,6 @@
 <template>
     <el-card>
-        <el-form :inline="true" :model="shopData">
+        <el-form :inline="true" :model="shopData" label-width="100px">
             <el-form-item label="门店名称">
                 <el-input v-model="shopData.shopName"></el-input>
             </el-form-item>
@@ -19,37 +19,36 @@
             <el-form-item label="营业执照号码">
                 <el-input v-model="shopData.shopLicenceNum"></el-input>
             </el-form-item>
-            <el-form-item label="营业执照图片">
-                <el-upload class="upload-demo" action="http://localhost:8080/" multiple
-                    :limit="3" :auto-upload="false">
+            <el-form-item label="头图">
+                <el-upload class="upload-demo" action="/shop/addShopImg" :on-success="addShopImg" :limit="1">
                     <el-button size="small" type="primary">点击上传</el-button>
                 </el-upload>
             </el-form-item>
-            <el-form-item label="头图">
-                <el-upload class="upload-demo" action="http://localhost:8080/" multiple
-                    :limit="3">
+            <el-form-item label="营业执照图片">
+                <el-upload class="upload-demo" action="/shop/addShopLicenceImg" :on-success="addShopLicenceImg"
+                    :limit="1">
                     <el-button size="small" type="primary">点击上传</el-button>
                 </el-upload>
             </el-form-item>
             <el-form-item label="商品">
-                <el-select v-model="shopData.goods" placeholder="商品">
+                <el-select v-model="shopData.goods" multiple placeholder="商品">
                     <el-option label="区域一" value="shanghai"></el-option>
                     <el-option label="区域二" value="beijing"></el-option>
                 </el-select>
             </el-form-item>
             <el-form-item label="服务">
-                <el-select v-model="shopData.service" placeholder="服务">
+                <el-select v-model="shopData.service" multiple placeholder="服务">
                     <el-option label="区域一" value="shanghai"></el-option>
                     <el-option label="区域二" value="beijing"></el-option>
                 </el-select>
             </el-form-item>
             <el-form-item label="宠物">
-                <el-select v-model="shopData.pets" placeholder="宠物">
+                <el-select v-model="shopData.pets" multiple placeholder="宠物">
                     <el-option label="区域一" value="shanghai"></el-option>
                     <el-option label="区域二" value="beijing"></el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item>
+            <el-form-item style="text-align:center">
                 <el-button type="primary" @click="handleClick">新增</el-button>
             </el-form-item>
         </el-form>
@@ -65,23 +64,31 @@
             ...mapState(["shopData"])
         },
         methods: {
-            ...mapActions(["addShopAsync"]),
+            ...mapActions(["addShopAsync", "getUserMesByIdAsync"]),
             handleClick() {
                 this.addShopAsync(this.shopData)
-            }
+            },
+            // 获取头图的路径
+            addShopImg(response, file, fileList) {
+                this.shopData.shopImg = response.data.url;
+            },
+            // 获取营业执照的图片的路径
+            addShopLicenceImg(response, file, fileList) {
+                this.shopData.shopLicenceImg = response.data.url;
+            },
         },
         mounted() {
-            // 该生命周期发生时，页面所有节点都已经加载完毕，此时需要向后台获取数据
-            // this.getMessageAsync();
+            this.getUserMesByIdAsync("5cd0fd8207833622b912a97f");
         }
     }
 </script>
 
 <style scoped>
-.el-card{
-    height:550px;
-}
-.el-form-item{
-    width:30%;
-}
+    .el-card {
+        height: 500px;
+    }
+
+    .el-form-item {
+        width: 40%;
+    }
 </style>

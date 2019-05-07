@@ -11,9 +11,9 @@ export default {
             shopTel: "",
             shopImg: "",
             shopFeature: "",
-            goods: "",
-            pets: "",
-            service: ""
+            goods: [],
+            pets: [],
+            service: []
         }
     },
     mutations: {
@@ -23,10 +23,15 @@ export default {
         // }
     },
     actions: {
-        // async getMessageAsync({ commit }) {
-        //     const data = await MesService.getMessage();
-        //     commit("getMessage", data);
-        // },
+        async getUserMesByIdAsync(context, payload) {
+            console.log(payload)
+            const data = await ShopService.getUserMesById(payload);
+            console.log(data)
+            // if (data) {
+            //     //触发actions用dispatch,触发方法mutations用commit
+            //     context.dispatch('getStudentByPageAsync');
+            // }
+        },
         async addShopAsync({ dispatch }, payload) {
             console.log(payload)
             const data = await ShopService.addShop(payload);

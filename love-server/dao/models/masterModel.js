@@ -25,5 +25,3 @@ const masterSchema = new mongoose.Schema({
 })
 
 mongoose.model('masterModel', masterSchema, "master");
-
-module.exports.masterModel = mongoose.model('masterModel');

@@ -39,5 +39,3 @@ const shopSchema = new mongoose.Schema({
 })
 
 mongoose.model('shopModel', shopSchema, "shop");
-
-module.exports.shopModel = mongoose.model('shopModel');

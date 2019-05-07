@@ -80,6 +80,7 @@
       </el-col>
       <router-view></router-view>
     </el-row>
+
   </div>
 
 </template>
@@ -144,7 +145,11 @@
   .grid-content a:hover {
     color: #fdcb32;
   }
+  .el-aside{
+    height: 100%;
+    background-color: #fdcb32;
+  }
   .el-menu-vertical-demo{
-    height: 550px;
+    height: 500px;
   }
 </style>
