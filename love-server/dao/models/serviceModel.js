@@ -12,7 +12,7 @@ const serviceSchema = new mongoose.Schema({
     // 服务规格（精修，普修等）
     serviceDetial:String,
     // 服务员等级(普通、高级服务价格不同)
-    serviceLevel:Number,
+    serviceLevel:String,
     // 耗时
     serviceTime: String,
     // 价格
