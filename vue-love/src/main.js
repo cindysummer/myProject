@@ -6,8 +6,6 @@ import store from './store';
 import ElementUI from 'element-ui';
 //引入element-ui样式
 import 'element-ui/lib/theme-chalk/index.css';
-import Moment from 'moment';
-Vue.prototype.moment=Moment;
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
