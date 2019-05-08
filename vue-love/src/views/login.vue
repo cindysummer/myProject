@@ -49,7 +49,7 @@ export default {
       // console.log(this.$refs.username.value)
       // this.loginAsync({userAccount:this.$refs.userAccount.value,userPwd:this.$refs.userPwd.value});
       this.loginAsync();
-      // this.$router.push("/shopSystem");
+      this.$router.push("/shopSystem");
     },
     register() {
       this.$router.push("/register");
