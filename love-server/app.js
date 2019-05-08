@@ -12,7 +12,7 @@ var ordersRouter = require('./routes/orders');
 var servicesRouter = require('./routes/services');
 var petsRouter = require('./routes/pets');
 var masterRouter = require('./routes/master');
-
+  // npm run serve
 var app = express();
 require("./dao/database");//引入链接数据库的文件即可
 
